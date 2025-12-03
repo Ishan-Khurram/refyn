@@ -1,29 +1,19 @@
-// How the navigation bar at the bottom actually functions.
-import { NativeTabs, Icon, Label } from "expo-router/unstable-native-tabs";
+import { Tabs } from "expo-router";
+import NavBar from "../../src/components/Navbar.android";
 
 export default function TabLayout() {
   return (
-    <NativeTabs>
-      <NativeTabs.Trigger name="index">
-        <Label>Home</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="runs">
-        <Label>Runs</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="logging">
-        <Label>Logging</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="lifts">
-        <Label>Lifts</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="settings">
-        <Label>Settings</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
-      </NativeTabs.Trigger>
-    </NativeTabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+      }}
+      tabBar={(props) => <NavBar {...props} />}
+    >
+      <Tabs.Screen name="index" options={{ title: "Home" }} />
+      <Tabs.Screen name="runs" options={{ title: "Runs" }} />
+      <Tabs.Screen name="logging" options={{ title: "Log" }} />
+      <Tabs.Screen name="lifts" options={{ title: "Lifts" }} />
+      <Tabs.Screen name="settings" options={{ title: "Settings" }} />
+    </Tabs>
   );
 }
