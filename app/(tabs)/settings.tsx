@@ -2,8 +2,8 @@ import { View, Text } from "react-native";
 
 export default function Settings() {
   return (
-    <View>
-      <Text>Settings</Text>
+    <View className="flex-1 items-center justify-center">
+      <Text className="text-black text-2xl">settings</Text>
     </View>
   );
 }

@@ -1,12 +1,8 @@
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { View, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type NavBarProps = BottomTabBarProps;
-
-// destructure props
-// current tab index / route index
-// per route options
-// tab navigation methods
 
 export default function NavBar({
   state,
@@ -14,57 +10,79 @@ export default function NavBar({
   navigation,
 }: NavBarProps) {
   return (
-    <View className="flex-row items-center justify-between bg-black px-4 py-2 border-t border-zinc-800">
-      {/* get array of route objects of tabs */}
-      {state.routes.map((route, index) => {
-        const isFocused = state.index === index;
-        const descriptor = descriptors[route.key];
+    <SafeAreaView edges={[]}>
+      <View className="mb-8 rounded-2xl bg-[#0D0907] flex-row items-center justify-between px-4 py-6 shadow-lg shadow-black/40">
+        {state.routes.map((route, index) => {
+          const isFocused = state.index === index;
+          const descriptor = descriptors[route.key];
 
-        // ensure descriptor is not undefined, satisfy ts checks
-        if (!descriptor) {
-          return null;
-        }
-
-        const { options } = descriptor;
-
-        // ensure type is string if i want to use it.
-        const label =
-          typeof options.tabBarLabel === "string"
-            ? options.tabBarLabel
-            : typeof options.title === "string"
-              ? options.title
-              : route.name;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: "tabPress",
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name as never); // cant infer exact param type, use backdoor only here.
+          if (!descriptor) {
+            return null;
           }
-        };
 
-        return (
-          <TouchableOpacity
-            key={route.key}
-            onPress={onPress}
-            className="flex-1 items-center"
-          >
-            <Text
-              className={
-                isFocused
-                  ? "text-white text-xs font-semibold"
-                  : "text-zinc-400 text-xs"
-              }
+          const { options } = descriptor;
+
+          const label =
+            typeof options.tabBarLabel === "string"
+              ? options.tabBarLabel
+              : typeof options.title === "string"
+                ? options.title
+                : route.name;
+
+          const isLoggingTab = route.name === "logging";
+
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
+
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name as never);
+            }
+          };
+
+          if (isLoggingTab) {
+            return (
+              <TouchableOpacity
+                key={route.key}
+                onPress={onPress}
+                className="flex-1 items-center -mt-8"
+                activeOpacity={0.9}
+              >
+                <View
+                  className={
+                    isFocused
+                      ? "w-16 h-16 rounded-full bg-emerald-500 items-center justify-center"
+                      : "w-16 h-16 rounded-full bg-zinc-800 items-center justify-center"
+                  }
+                >
+                  <Text className="text-white text-2xl font-bold">+</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }
+
+          return (
+            <TouchableOpacity
+              key={route.key}
+              onPress={onPress}
+              className="flex-1 items-center"
             >
-              {label}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+              <Text
+                className={
+                  isFocused
+                    ? "text-white text-xs font-semibold"
+                    : "text-zinc-400 text-xs"
+                }
+              >
+                {label}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
