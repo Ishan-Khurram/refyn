@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import {
   VictoryChart,
   VictoryLine,
@@ -8,12 +8,15 @@ import {
 } from "victory-native";
 import type { WeeklyPoint } from "./types";
 import { colors } from "../../theme/colors";
+import { WEEKLY_POINTS } from "./data";
 
 type WeeklyMileageChartProps = {
   data: WeeklyPoint[];
 };
 
 const weekdayLabels = ["S", "M", "T", "W", "T", "F", "S"];
+
+const totalDistance = WEEKLY_POINTS.reduce((sum, p) => sum + p.distanceKm, 0);
 
 export function WeeklyMileageChart({ data }: WeeklyMileageChartProps) {
   // Map WeeklyPoint -> Victory's { x, y } format
@@ -31,8 +34,8 @@ export function WeeklyMileageChart({ data }: WeeklyMileageChartProps) {
         style={{ backgroundColor: colors.card }}
       >
         <VictoryChart
-          padding={{ top: 10, bottom: 40, left: 50, right: 20 }}
-          domainPadding={{ x: 20, y: 10 }}
+          padding={{ top: 10, bottom: 40, left: 50, right: 5 }}
+          domainPadding={{ x: 10, y: 10 }}
           height={224}
           width={350}
         >
@@ -81,6 +84,22 @@ export function WeeklyMileageChart({ data }: WeeklyMileageChartProps) {
             }}
           />
         </VictoryChart>
+        <View className="flex-row justify-between">
+          <View>
+            <Text className="text-[11px] text-gray-400">Total Distance:</Text>
+            <Text className="text-white text-2xl font-semibold mt-1">
+              {totalDistance.toFixed(1)} km
+            </Text>
+          </View>
+          <View>
+            <Text className="text-[11px] text-gray-400 text-right">
+              Total Time:
+            </Text>
+            <Text className="text-white text-2xl font-semibold mt-1 text-right">
+              5h 32m
+            </Text>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );

@@ -30,7 +30,7 @@ export default function Index() {
 
         <StreakCard />
         <WeeklySummaryCard />
-        {/* <LastWorkoutCard /> */}
+        <LastWorkoutCard />
       </ScrollView>
     </SafeAreaView>
   );
