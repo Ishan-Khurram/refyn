@@ -1,6 +1,7 @@
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useLogFab } from "./logging/useLogFab";
 
 type NavBarProps = BottomTabBarProps;
 
@@ -9,6 +10,7 @@ export default function NavBar({
   descriptors,
   navigation,
 }: NavBarProps) {
+  const { toggle } = useLogFab();
   return (
     <SafeAreaView edges={[]}>
       <View className="mb-8 rounded-2xl bg-[#0D0907] flex-row items-center justify-between px-4 py-6 shadow-lg shadow-black/40">
@@ -30,8 +32,12 @@ export default function NavBar({
                 : route.name;
 
           const isLoggingTab = route.name === "logging";
-
           const onPress = () => {
+            if (isLoggingTab) {
+              toggle();
+              return;
+            }
+
             const event = navigation.emit({
               type: "tabPress",
               target: route.key,
