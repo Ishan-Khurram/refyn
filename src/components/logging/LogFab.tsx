@@ -21,7 +21,7 @@ export function LogFab() {
         <Pressable
           onPress={() => {
             close();
-            console.log("Add Run");
+            console.log("Add Run"); // TODO: replace with screen
           }}
           className="min-w-[180px] rounded-2xl bg-zinc-900 py-4 items-center"
         >
@@ -31,7 +31,7 @@ export function LogFab() {
         <Pressable
           onPress={() => {
             close();
-            console.log("Add Lift");
+            console.log("Add Lift"); // TODO: replace with screen
           }}
           className="min-w-[180px] rounded-2xl bg-zinc-900 py-4 items-center"
         >
