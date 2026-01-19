@@ -1,9 +1,8 @@
-// components/home/LastWorkoutCard.tsx
 import { View, Text } from "react-native";
 import { colors } from "../../theme/colors";
 import { LAST_WORKOUT } from "./data";
 
-export function LastWorkoutCard() {
+export default function LastWorkoutCard() {
   const w = LAST_WORKOUT;
 
   return (

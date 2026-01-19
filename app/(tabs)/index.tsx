@@ -1,9 +1,9 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, View, Text } from "react-native";
 import { colors } from "../../src/theme/colors";
-import { StreakCard } from "../../src/components/home/StreakCard";
-import { WeeklySummaryCard } from "../../src/components/home/WeeklySummaryCard";
-import { LastWorkoutCard } from "../../src/components/home/LastWorkoutCard";
+import StreakCard from "../../src/components/home/StreakCard";
+import WeeklySummaryCard from "../../src/components/home/WeeklySummaryCard";
+import LastWorkoutCard from "../../src/components/home/LastWorkoutCard";
 
 // Home page
 // Refyn title up top
@@ -13,7 +13,10 @@ import { LastWorkoutCard } from "../../src/components/home/LastWorkoutCard";
 
 export default function Index() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+    <SafeAreaView
+      edges={["top"]}
+      style={{ flex: 1, backgroundColor: colors.background }}
+    >
       <ScrollView
         contentContainerStyle={{
           paddingHorizontal: 16,

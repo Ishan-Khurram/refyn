@@ -3,7 +3,7 @@ import { colors } from "../../theme/colors";
 import { STREAK_DAYS, STREAK_DAYS_ARRAY } from "./data";
 import HorizontalRule from "../HorizontalRule";
 
-export function StreakCard() {
+export default function StreakCard() {
   return (
     <View
       className="rounded-2xl p-4 mt-4"

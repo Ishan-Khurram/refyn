@@ -1,6 +1,6 @@
 import "../../global.css";
 import { Tabs } from "expo-router";
-import NavBar from "../../src/components/Navbar.android";
+import NavBar from "../../src/components/Navbar";
 
 export default function TabLayout() {
   return (
