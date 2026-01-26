@@ -29,24 +29,20 @@ export default function LastWorkoutCard() {
       </View>
 
       {/* Metrics row */}
-      <View className="flex-row justify-between mb-3">
+      <View className="flex-row justify-between mb-3 mt-3">
         <View className="min-w-[88px]">
-          <Text className="text-[11px] text-gray-400">Pace</Text>
-          <Text className="text-white text-[13px] mt-0.5">{w.pace}</Text>
+          <Text className="text-[14px] text-gray-400">Pace</Text>
+          <Text className="text-white text-[16px] mt-1">{w.pace}</Text>
         </View>
 
         <View className="min-w-[88px] items-center">
-          <Text className="text-[11px] text-gray-400">Distance</Text>
-          <Text className="text-white text-[13px] mt-0.5">
-            {w.distanceKm} km
-          </Text>
+          <Text className="text-[14px] text-gray-400">Distance</Text>
+          <Text className="text-white text-[16px] mt-1">{w.distanceKm} km</Text>
         </View>
 
         <View className="min-w-[88px] items-end">
-          <Text className="text-[11px] text-gray-400">Heart Rate</Text>
-          <Text className="text-white text-[13px] mt-0.5">
-            ❤️ {w.heartRate}
-          </Text>
+          <Text className="text-[14px] text-gray-400">Heart Rate</Text>
+          <Text className="text-white text-[16px] mt-1">❤️ {w.heartRate}</Text>
         </View>
       </View>
 

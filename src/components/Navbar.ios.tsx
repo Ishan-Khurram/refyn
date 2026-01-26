@@ -17,11 +17,11 @@ export default function NavBar({
   const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView edges={["bottom"]}>
+    <SafeAreaView edges={[]}>
       <View
         className="mx-1 rounded-2xl bg-[#0D0907] flex-row items-center justify-between px-4 pt-3"
         style={{
-          paddingBottom: 10,
+          paddingBottom: 25,
           shadowColor: "#000",
           shadowOpacity: 0.35,
           shadowRadius: 14,
@@ -77,7 +77,7 @@ export default function NavBar({
                       : "w-16 h-16 rounded-full bg-emerald-500 items-center justify-center"
                   }
                 >
-                  <Text className="text-white text-2xl font-bold">+</Text>
+                  <Text className="text-white text-3xl font-bold">+</Text>
                 </View>
               </TouchableOpacity>
             );

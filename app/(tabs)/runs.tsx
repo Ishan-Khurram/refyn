@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { View } from "react-native";
 import { colors } from "../../src/theme/colors";
 import TabFilter from "../../src/components/runs/TabFilter";
 import RunFoldersList from "../../src/components/runs/RunFolders";

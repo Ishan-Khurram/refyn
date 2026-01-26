@@ -31,7 +31,7 @@ export default function StreakCard() {
       </View>
 
       {/* Streak + button */}
-      <View className="flex-row items-center justify-between mt-4">
+      <View className="flex-row items-center justify-between mt-8">
         <Text className="text-white text-2xl font-semibold">
           Streak: {STREAK_DAYS} days
         </Text>
@@ -47,12 +47,12 @@ export default function StreakCard() {
         </TouchableOpacity>
       </View>
 
-      <View className="mt-3">
+      <View className="mt-1">
         <HorizontalRule />
       </View>
 
       {/* Subtext */}
-      <View className="mt-3">
+      <View className="mt-1">
         <Text className="text-[15px] font-semibold text-gray-300">
           Streak dies in 14h 22m
         </Text>
