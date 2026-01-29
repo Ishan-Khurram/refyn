@@ -5,6 +5,9 @@
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 import { useLogFab } from "./useLogFab";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../../../src/firebase/firebase";
+import { router } from "expo-router";
 
 export function LogFab() {
   const { isOpen, close } = useLogFab();
@@ -21,7 +24,7 @@ export function LogFab() {
         <Pressable
           onPress={() => {
             close();
-            console.log("Add Run"); // TODO: replace with screen
+            router.push("/(modals)/add-run");
           }}
           className="min-w-[180px] rounded-2xl bg-zinc-900 py-4 items-center"
         >

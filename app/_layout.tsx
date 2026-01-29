@@ -11,7 +11,15 @@ export default function RootLayout() {
           headerShown: false,
           contentStyle: { backgroundColor: "#0D0907" }, // global background
         }}
-      />
+      >
+        <Stack.Screen
+          name="(modals)/add-run"
+          options={{
+            presentation: "card",
+            animation: "slide_from_right",
+          }}
+        />
+      </Stack>
     </LogFabProvider>
   );
 }
