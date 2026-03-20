@@ -14,6 +14,9 @@ const TEMP_UID = "testUser";
 // general folder id before adding create folder button
 const GENERAL_FOLDER_ID = "general";
 
+// Interface for the data being pushed
+type CreateRunArgs = {};
+
 async function pushRunToDB() {
   // check if general folder is there.
   await setDoc(
@@ -21,4 +24,6 @@ async function pushRunToDB() {
     { name: "General", isDefault: true, createdAt: serverTimestamp() },
     { merge: true },
   );
+
+  //
 }
